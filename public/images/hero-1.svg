@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="480" height="800" viewBox="0 0 480 800">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#C4956A"/>
+      <stop offset="100%" stop-color="#5A4A3A"/>
+    </linearGradient>
+  </defs>
+  <rect width="480" height="800" fill="url(#bg)"/>
+  <text x="240" y="380" font-family="sans-serif" font-size="120" fill="rgba(255,255,255,0.15)" text-anchor="middle">۱</text>
+  <text x="240" y="440" font-family="sans-serif" font-size="20" fill="rgba(255,255,255,0.3)" text-anchor="middle">hero-1.jpg</text>
+</svg>

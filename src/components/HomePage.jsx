@@ -34,20 +34,16 @@ export default function HomePage({
       onTouchEnd={handleTouchEnd}
     >
       {/* Hero Background */}
-      <div
-        className="hero-bg"
-        style={{ background: outfit.heroGradient }}
-      >
-        <div className="hero-silhouette">
-          <svg viewBox="0 0 200 400" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <ellipse cx="100" cy="55" rx="30" ry="35" fill="rgba(255,255,255,0.08)" />
-            <path d="M60 90 C60 90 40 100 35 140 L30 220 L55 220 L60 160 L70 220 L80 220 L75 140 Z" fill="rgba(255,255,255,0.06)" />
-            <path d="M125 140 L120 220 L130 220 L140 160 L145 220 L170 220 L165 140 C160 100 140 90 140 90 Z" fill="rgba(255,255,255,0.06)" />
-            <rect x="65" y="90" width="70" height="100" rx="5" fill="rgba(255,255,255,0.07)" />
-            <path d="M55 220 L50 380 L80 380 L85 250 Z" fill="rgba(255,255,255,0.05)" />
-            <path d="M115 250 L120 380 L150 380 L145 220 Z" fill="rgba(255,255,255,0.05)" />
-          </svg>
-        </div>
+      <div className="hero-bg" style={{ background: outfit.heroGradient }}>
+        {outfit.heroImage && (
+          <img
+            className="hero-image"
+            src={outfit.heroImage}
+            alt={`ست شماره ${outfitIndex + 1}`}
+            draggable="false"
+          />
+        )}
+        <div className="hero-overlay" />
       </div>
 
       {/* Header */}
