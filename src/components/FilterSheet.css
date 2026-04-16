@@ -5,14 +5,20 @@
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
+  animation: fadeIn 0.25s ease-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 
 .filter-blur {
   position: absolute;
   inset: 0;
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  background: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  background: rgba(0, 0, 0, 0.35);
 }
 
 .filter-sheet {
@@ -21,8 +27,14 @@
   display: flex;
   flex-direction: column;
   gap: 16px;
-  padding: 20px 20px;
-  padding-bottom: calc(16px + env(safe-area-inset-bottom, 8px));
+  padding: 24px 20px;
+  padding-bottom: calc(20px + env(safe-area-inset-bottom, 8px));
+  animation: sheetUp 0.3s ease-out;
+}
+
+@keyframes sheetUp {
+  from { transform: translateY(40px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
 }
 
 /* Filter Options */
@@ -36,24 +48,24 @@
 .filter-pill {
   padding: 10px 28px;
   border-radius: 24px;
-  background: rgba(120, 120, 120, 0.35);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  color: rgba(255, 255, 255, 0.85);
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  color: rgba(255, 255, 255, 0.75);
   font-size: 16px;
   font-weight: 500;
   font-family: 'Vazirmatn', sans-serif;
-  transition: all 0.25s;
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.2s;
+  border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .filter-pill:active {
-  transform: scale(0.95);
+  transform: scale(0.94);
 }
 
 .filter-pill.active {
-  background: rgba(255, 255, 255, 0.2);
-  border-color: rgba(255, 255, 255, 0.35);
+  background: rgba(255, 255, 255, 0.18);
+  border-color: rgba(255, 255, 255, 0.3);
   color: #fff;
 }
 
@@ -61,23 +73,27 @@
 .filter-tabs {
   display: flex;
   justify-content: space-around;
-  background: rgba(30, 30, 30, 0.9);
+  background: rgba(20, 20, 22, 0.92);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  border-radius: 20px;
-  padding: 12px 8px;
+  border-radius: 22px;
+  padding: 14px 8px 10px;
 }
 
 .filter-tab {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 4px;
+  gap: 5px;
   padding: 8px 12px;
-  color: rgba(255, 255, 255, 0.45);
-  transition: color 0.25s;
+  color: rgba(255, 255, 255, 0.35);
+  transition: color 0.2s;
   position: relative;
   min-width: 60px;
+}
+
+.filter-tab:active {
+  transform: scale(0.95);
 }
 
 .filter-tab.active {
@@ -91,16 +107,16 @@
 }
 
 .tab-label {
-  font-size: 12px;
+  font-size: 11px;
   font-weight: 500;
 }
 
 .tab-indicator {
   position: absolute;
-  bottom: 0;
+  bottom: -2px;
   left: 50%;
   transform: translateX(-50%);
-  width: 24px;
+  width: 22px;
   height: 3px;
   border-radius: 2px;
   background: #fff;

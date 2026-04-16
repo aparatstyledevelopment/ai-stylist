@@ -61,7 +61,7 @@ export default function CartPage({ cart, allItems, onRemoveFromCart, onClose }) 
                 </button>
                 <div className="cart-item-info">
                   <h3 className="cart-item-name">{item.name.length > 28 ? item.name.slice(0, 28) + '...' : item.name}</h3>
-                  <p className="cart-item-note">سایز و رنگ در مرحله پرداخت انتخاب می‌شود</p>
+                  {item.selectedSize && <p className="cart-item-size">سایز: {item.selectedSize}</p>}
                   <span className="cart-item-price">{item.price} تومان</span>
                 </div>
                 <div className="cart-item-image" style={{ background: item.cardColors[0] }}>
@@ -117,7 +117,7 @@ export default function CartPage({ cart, allItems, onRemoveFromCart, onClose }) 
             </p>
 
             {/* Checkout Button */}
-            <button className="checkout-btn">
+            <button className="checkout-btn" disabled>
               تکمیل خرید (به‌زودی)
             </button>
           </>

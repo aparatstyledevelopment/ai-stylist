@@ -1,10 +1,16 @@
 .personalization-page {
   position: fixed;
   inset: 0;
-  z-index: 70;
+  z-index: 75;
   background: #0a0a0a;
   display: flex;
   flex-direction: column;
+  animation: pageSlideIn 0.3s ease-out;
+}
+
+@keyframes pageSlideIn {
+  from { transform: translateX(-30%); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
 }
 
 .pers-header {
@@ -100,6 +106,12 @@
   grid-template-columns: repeat(3, 1fr);
   gap: 10px;
   margin-bottom: 24px;
+}
+
+@media (max-width: 360px) {
+  .options-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
 .body-type-card {
