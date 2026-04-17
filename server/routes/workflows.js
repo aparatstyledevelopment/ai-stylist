@@ -1,6 +1,9 @@
 import { Router } from 'express';
 import { runMeetingBrief } from '../services/meetingBriefService.js';
 import { runInvestorTargeting } from '../services/investorTargetingService.js';
+import { runBoardPack } from '../services/boardPackService.js';
+import { runPostMeeting } from '../services/postMeetingService.js';
+import { runRegulatoryMonitor } from '../services/regulatoryMonitorService.js';
 import { artifactStore } from '../data/index.js';
 
 const router = Router();
@@ -62,13 +65,13 @@ router.post('/run', async (req, res) => {
       await runInvestorTargeting(payload, onProgress, onChunk, onCitation, onDone, onError);
       break;
     case 'board-pack':
-      await simulateWorkflow(res, onProgress, onChunk, onDone, 'board-pack', payload, 'Board IR Pack — October 2024');
+      await runBoardPack(payload, onProgress, onChunk, onCitation, onDone, onError);
       break;
     case 'post-meeting':
-      await simulateWorkflow(res, onProgress, onChunk, onDone, 'post-meeting', payload, 'Post-Meeting Synthesis');
+      await runPostMeeting(payload, onProgress, onChunk, onCitation, onDone, onError);
       break;
     case 'regulatory-monitor':
-      await simulateWorkflow(res, onProgress, onChunk, onDone, 'regulatory-monitor', payload, 'Regulatory Monitor Digest');
+      await runRegulatoryMonitor(payload, onProgress, onChunk, onCitation, onDone, onError);
       break;
     default:
       onError({ message: `Unknown workflow type: ${type}` });

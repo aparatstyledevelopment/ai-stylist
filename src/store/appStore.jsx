@@ -26,7 +26,7 @@ function reducer(state, action) {
     case 'SET_ACTIVE_ARTIFACT':
       return { ...state, activeArtifactId: action.payload };
     case 'TOGGLE_CHAT':
-      return { ...state, chatOpen: !state.chatOpen };
+      return { ...state, chatOpen: action.force === false ? false : !state.chatOpen };
     case 'DISMISS_ALERT':
       return { ...state, alerts: state.alerts.filter(a => a.id !== action.payload) };
     default:

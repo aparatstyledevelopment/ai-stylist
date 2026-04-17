@@ -2,6 +2,9 @@ import { useState, useRef, useCallback } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import MeetingBriefForm from '../components/workflow/MeetingBriefForm.jsx';
 import InvestorTargetingForm from '../components/workflow/InvestorTargetingForm.jsx';
+import BoardPackForm from '../components/workflow/BoardPackForm.jsx';
+import PostMeetingForm from '../components/workflow/PostMeetingForm.jsx';
+import RegulatoryMonitorForm from '../components/workflow/RegulatoryMonitorForm.jsx';
 import WorkflowProgress from '../components/workflow/WorkflowProgress.jsx';
 import ArtifactViewer from '../components/artifact/ArtifactViewer.jsx';
 import CitationPanel from '../components/artifact/CitationPanel.jsx';
@@ -13,21 +16,10 @@ import './WorkflowPage.css';
 const META = {
   'meeting-brief':       { name: 'Meeting Brief', description: 'Generate a structured investor meeting brief with cited data.', FormComponent: MeetingBriefForm },
   'investor-targeting':  { name: 'Investor Targeting', description: 'Find and rank investors matching your criteria using natural language.', FormComponent: InvestorTargetingForm },
-  'board-pack':          { name: 'Board IR Pack', description: 'Generate the monthly board IR pack.', FormComponent: GenericStubForm },
-  'post-meeting':        { name: 'Post-Meeting Synthesis', description: 'Synthesize roadshow feedback and ownership correlation.', FormComponent: GenericStubForm },
-  'regulatory-monitor':  { name: 'Regulatory Monitor', description: 'Monitor short positions, insider transactions, and activist filings.', FormComponent: GenericStubForm },
+  'board-pack':          { name: 'Board IR Pack', description: 'Generate the monthly board IR pack — ownership, consensus, shorts, insider activity.', FormComponent: BoardPackForm },
+  'post-meeting':        { name: 'Post-Meeting Synthesis', description: 'Synthesize roadshow feedback — sentiment trends, recurring themes, ownership correlation.', FormComponent: PostMeetingForm },
+  'regulatory-monitor':  { name: 'Regulatory Monitor', description: 'Monitor short positions, insider transactions, and activist filings with AI summaries.', FormComponent: RegulatoryMonitorForm },
 };
-
-function GenericStubForm({ onSubmit, loading }) {
-  return (
-    <div className="wf-stub">
-      <p className="wf-stub-msg">This workflow is in development. Click below to generate a stub demo.</p>
-      <Button variant="primary" size="lg" loading={loading} onClick={() => onSubmit({})}>
-        Generate Demo
-      </Button>
-    </div>
-  );
-}
 
 export default function WorkflowPage() {
   const { type } = useParams();

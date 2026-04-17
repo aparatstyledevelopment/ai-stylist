@@ -4,17 +4,22 @@ import WorkspacePage from './pages/WorkspacePage.jsx';
 import DataExplorerPage from './pages/DataExplorerPage.jsx';
 import ArtifactPage from './pages/ArtifactPage.jsx';
 import WorkflowPage from './pages/WorkflowPage.jsx';
+import InvestorDetailPage from './pages/InvestorDetailPage.jsx';
+import ErrorBoundary from './components/common/ErrorBoundary.jsx';
 
 export default function App() {
   return (
-    <Shell>
-      <Routes>
-        <Route path="/" element={<Navigate to="/workspace" replace />} />
-        <Route path="/workspace" element={<WorkspacePage />} />
-        <Route path="/explorer" element={<DataExplorerPage />} />
-        <Route path="/artifact/:id" element={<ArtifactPage />} />
-        <Route path="/workflow/:type" element={<WorkflowPage />} />
-      </Routes>
-    </Shell>
+    <ErrorBoundary>
+      <Shell>
+        <Routes>
+          <Route path="/" element={<Navigate to="/workspace" replace />} />
+          <Route path="/workspace" element={<WorkspacePage />} />
+          <Route path="/explorer" element={<DataExplorerPage />} />
+          <Route path="/artifact/:id" element={<ArtifactPage />} />
+          <Route path="/workflow/:type" element={<WorkflowPage />} />
+          <Route path="/investor/:id" element={<InvestorDetailPage />} />
+        </Routes>
+      </Shell>
+    </ErrorBoundary>
   );
 }

@@ -41,6 +41,20 @@
 
 .artifact-page-actions { display: flex; align-items: center; gap: var(--space-3); padding-top: 8px; }
 
+.artifact-page-action-btn {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 6px 10px;
+  font-size: 12px;
+  color: var(--text-secondary);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  transition: all var(--transition);
+}
+
+.artifact-page-action-btn:hover { color: var(--text-primary); background: var(--bg-elevated); }
+
 .artifact-page-del {
   color: var(--text-dim);
   padding: 6px;
@@ -49,6 +63,16 @@
 }
 
 .artifact-page-del:hover { color: var(--negative); background: var(--negative-bg); }
+
+@media print {
+  .shell-body > nav, .topnav, .artifact-page-header .artifact-page-actions,
+  .citation-panel, .artifact-page-back { display: none !important; }
+  .artifact-viewer { padding: 0; overflow: visible; }
+  .artifact-page { overflow: visible; height: auto; }
+  .shell-main { overflow: visible; }
+  body { background: white; color: black; }
+  .artifact-h2, .artifact-h3, .artifact-p, .artifact-li { color: black; }
+}
 
 .artifact-page-body {
   flex: 1;

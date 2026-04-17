@@ -2,6 +2,7 @@ import { useState, useEffect, useCallback } from 'react';
 import { useSearchParams, useNavigate } from 'react-router-dom';
 import ExplorerTabs from '../components/explorer/ExplorerTabs.jsx';
 import DataTable from '../components/common/DataTable.jsx';
+import Sparkline from '../components/common/Sparkline.jsx';
 import { useAppStore } from '../store/appStore.jsx';
 import { getHoldings, getInvestors, getPeers, getMeetings, getCRM } from '../api/data.js';
 import './DataExplorerPage.css';
@@ -14,25 +15,41 @@ const CHANGE_COLORS = {
   Increase: 'positive', Decrease: 'negative', New: 'accent', Exited: 'negative', Unchanged: 'muted'
 };
 
-const COLUMNS = {
+function buildColumns(allRows) {
+  // Group holdings by investor for sparklines
+  const holdingsByInvestor = {};
+  if (allRows?.length) {
+    allRows.forEach(h => {
+      if (!holdingsByInvestor[h.investorId || h.investorName]) holdingsByInvestor[h.investorId || h.investorName] = [];
+      holdingsByInvestor[h.investorId || h.investorName].push(h.pct);
+    });
+  }
+  return {
   holdings: [
     { key: 'investorName', label: 'Investor' },
     { key: 'quarter', label: 'Quarter', numeric: true },
     { key: 'shares', label: 'Shares Held', numeric: true, render: v => fmt(v) },
-    { key: 'value', label: 'Value (SEK)', numeric: true, render: v => '£' + fmt(v) },
     { key: 'pct', label: '% of Co.', numeric: true, render: v => fmtPct(v) },
     { key: 'changeType', label: 'Change', render: (v) => <span className={CHANGE_COLORS[v] || ''}>{v}</span> },
   ],
   investors: [
-    { key: 'name', label: 'Investor' },
+    { key: 'name', label: 'Investor', render: (v, row) => (
+      <span style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+        <span style={{ fontWeight: 500 }}>{v}</span>
+      </span>
+    )},
     { key: 'country', label: 'Country' },
     { key: 'type', label: 'Type' },
     { key: 'style', label: 'Style' },
-    { key: 'aum', label: 'AUM (EUR)', numeric: true, render: v => fmtEUR(v) },
+    { key: 'aum', label: 'AUM', numeric: true, render: v => v >= 1e9 ? '€' + (v / 1e9).toFixed(1) + 'B' : '€' + (v / 1e6).toFixed(0) + 'M' },
     { key: 'lastMeeting', label: 'Last Meeting' },
     { key: 'sentiment', label: 'Sentiment', render: v => {
       const cls = { positive: 'positive', Positive: 'positive', constructive: 'positive', Constructive: 'positive', cautious: 'warn', Cautious: 'warn', negative: 'negative', Negative: 'negative' };
       return <span className={cls[v] || 'muted'}>{v || '—'}</span>;
+    }},
+    { key: 'holdingNXTK', label: 'Trend', sortable: false, render: (v) => {
+      if (!v?.history?.length) return <span className="muted dim">—</span>;
+      return <Sparkline data={v.history.map(h => h.pct)} width={72} height={24} />;
     }},
   ],
   peers: [
@@ -66,11 +83,13 @@ const COLUMNS = {
     }},
     { key: 'nextStep', label: 'Next Step', sortable: false, render: v => v ? v.slice(0, 70) + (v.length > 70 ? '…' : '') : '—' },
   ],
-};
+  }; // end buildColumns return
+} // end buildColumns
 
 export default function DataExplorerPage() {
   const [searchParams, setSearchParams] = useSearchParams();
   const { state } = useAppStore();
+  const navigate = useNavigate();
   const activeTab = searchParams.get('tab') || 'holdings';
   const highlightId = searchParams.get('highlight');
   const [rows, setRows] = useState([]);
@@ -98,8 +117,17 @@ export default function DataExplorerPage() {
     setSearch('');
   }
 
+  function handleRowClick(row) {
+    const investorId = row.id || row.investorId;
+    if (activeTab === 'investors' && investorId) navigate(`/investor/${investorId}`);
+    if (activeTab === 'meetings' && row.investorId) navigate(`/investor/${row.investorId}`);
+    if (activeTab === 'crm' && row.investorId) navigate(`/investor/${row.investorId}`);
+  }
+
+  const COLUMNS = buildColumns(rows);
+
   const filtered = search
-    ? rows.filter(r => Object.values(r).some(v => String(v).toLowerCase().includes(search.toLowerCase())))
+    ? rows.filter(r => Object.values(r).some(v => String(v) && String(v).toLowerCase().includes(search.toLowerCase())))
     : rows;
 
   return (
@@ -137,6 +165,7 @@ export default function DataExplorerPage() {
             columns={COLUMNS[activeTab] || []}
             rows={filtered}
             highlightId={highlightId}
+            onRowClick={['investors', 'meetings', 'crm'].includes(activeTab) ? handleRowClick : undefined}
           />
         )}
       </div>
