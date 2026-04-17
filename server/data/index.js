@@ -4,6 +4,7 @@ import { holdings } from './holdings.js';
 import { peerHoldings } from './peers.js';
 import { meetings } from './meetings.js';
 import { crmContacts } from './crm.js';
+export { analystConsensus, shortPositions, totalShortInterest, insiderTransactions, activistAlerts } from './marketData.js';
 
 // In-memory artifact store
 export const artifactStore = new Map();

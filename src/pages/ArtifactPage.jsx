@@ -53,6 +53,14 @@ export default function ArtifactPage() {
           <h1 className="artifact-page-title">{artifact.title}</h1>
         </div>
         <div className="artifact-page-actions">
+          <button
+            className="artifact-page-action-btn"
+            onClick={() => window.print()}
+            title="Print / Export to PDF"
+          >
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+            Print
+          </button>
           <button className="artifact-page-del" onClick={handleDelete} title="Delete artifact">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14H6L5 6"/><path d="M10 11v6M14 11v6"/><path d="M9 6V4h6v2"/></svg>
           </button>
