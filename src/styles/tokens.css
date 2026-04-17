@@ -1,0 +1,49 @@
+:root {
+  --bg-base:       #0a0c0f;
+  --bg-surface:    #111318;
+  --bg-elevated:   #1a1d24;
+  --bg-hover:      #20242f;
+  --border:        #262a35;
+  --border-subtle: #1c2030;
+
+  --accent:        #00d4ff;
+  --accent-dim:    #0099bb;
+  --accent-bg:     rgba(0, 212, 255, 0.07);
+
+  --positive:      #00c48c;
+  --positive-bg:   rgba(0, 196, 140, 0.08);
+  --negative:      #ff4d6d;
+  --negative-bg:   rgba(255, 77, 109, 0.08);
+  --warn:          #ffb347;
+  --warn-bg:       rgba(255, 179, 71, 0.08);
+
+  --text-primary:  #e8eaf0;
+  --text-secondary:#8b909e;
+  --text-dim:      #4a5068;
+
+  --font-sans:     'Inter', system-ui, -apple-system, sans-serif;
+  --font-mono:     'JetBrains Mono', 'Fira Code', 'Cascadia Code', monospace;
+
+  --radius-sm:     4px;
+  --radius-md:     8px;
+  --radius-lg:     12px;
+
+  --space-1:       4px;
+  --space-2:       8px;
+  --space-3:       12px;
+  --space-4:       16px;
+  --space-5:       20px;
+  --space-6:       24px;
+  --space-8:       32px;
+  --space-10:      40px;
+  --space-12:      48px;
+
+  --sidebar-width: 240px;
+  --topnav-height: 52px;
+
+  --shadow-sm:     0 1px 3px rgba(0,0,0,0.4);
+  --shadow-md:     0 4px 12px rgba(0,0,0,0.5);
+  --shadow-lg:     0 8px 32px rgba(0,0,0,0.6);
+
+  --transition:    150ms ease;
+}
