@@ -1,0 +1,92 @@
+.wf-progress {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: var(--space-8) var(--space-6);
+}
+
+.wf-progress-steps {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  margin-bottom: var(--space-6);
+}
+
+.wf-step {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  font-size: 13px;
+}
+
+.wf-step-dot {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.wf-step-pending .wf-step-dot {
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+}
+
+.wf-step-pending .wf-step-label { color: var(--text-dim); }
+
+.wf-step-active .wf-step-dot {
+  background: var(--accent-bg);
+  border: 1px solid rgba(0,212,255,0.3);
+}
+
+.wf-step-active .wf-step-label { color: var(--accent); }
+
+.wf-step-done .wf-step-dot {
+  background: var(--positive-bg);
+  border: 1px solid rgba(0,196,140,0.3);
+  color: var(--positive);
+}
+
+.wf-step-done .wf-step-label { color: var(--text-secondary); }
+
+.wf-step-spinner {
+  width: 10px;
+  height: 10px;
+  border: 2px solid var(--accent);
+  border-top-color: transparent;
+  border-radius: 50%;
+  animation: spin 0.6s linear infinite;
+}
+
+@keyframes spin { to { transform: rotate(360deg); } }
+
+.wf-partial {
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: var(--space-4);
+}
+
+.wf-partial-label { margin-bottom: var(--space-3); }
+
+.wf-partial-text {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  line-height: 1.6;
+  color: var(--text-secondary);
+  white-space: pre-wrap;
+  max-height: 200px;
+  overflow: hidden;
+}
+
+.wf-cursor {
+  display: inline-block;
+  width: 2px;
+  height: 14px;
+  background: var(--accent);
+  animation: blink 1s step-end infinite;
+  vertical-align: middle;
+}
+
+@keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }

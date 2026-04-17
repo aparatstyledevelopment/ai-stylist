@@ -1,0 +1,45 @@
+@import './tokens.css';
+@import './reset.css';
+
+html, body, #root {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
+
+body {
+  font-family: var(--font-sans);
+  background: var(--bg-base);
+  color: var(--text-primary);
+  font-size: 14px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--text-dim); }
+
+.num { font-family: var(--font-mono); }
+.positive { color: var(--positive); }
+.negative { color: var(--negative); }
+.warn { color: var(--warn); }
+.muted { color: var(--text-secondary); }
+.dim { color: var(--text-dim); }
+.accent { color: var(--accent); }
+
+.label {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+}
+
+.data-unavailable {
+  color: var(--warn);
+  font-style: italic;
+  font-size: 13px;
+}
