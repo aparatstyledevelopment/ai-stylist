@@ -1,25 +1,28 @@
-import { Routes, Route, Navigate } from 'react-router-dom';
-import Shell from './components/layout/Shell.jsx';
-import WorkspacePage from './pages/WorkspacePage.jsx';
-import DataExplorerPage from './pages/DataExplorerPage.jsx';
-import ArtifactPage from './pages/ArtifactPage.jsx';
-import WorkflowPage from './pages/WorkflowPage.jsx';
-import InvestorDetailPage from './pages/InvestorDetailPage.jsx';
-import ErrorBoundary from './components/common/ErrorBoundary.jsx';
+import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
+import { AppProvider } from './context/AppContext.jsx';
+import { Basket } from './pages/Basket.jsx';
+import { Home } from './pages/Home.jsx';
+import { Onboarding } from './pages/Onboarding.jsx';
+import { Personalization } from './pages/Personalization.jsx';
+import { Profile } from './pages/Profile.jsx';
+import { Splash } from './pages/Splash.jsx';
 
-export default function App() {
+export function App() {
   return (
-    <ErrorBoundary>
-      <Shell>
+    <AppProvider>
+      <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Navigate to="/workspace" replace />} />
-          <Route path="/workspace" element={<WorkspacePage />} />
-          <Route path="/explorer" element={<DataExplorerPage />} />
-          <Route path="/artifact/:id" element={<ArtifactPage />} />
-          <Route path="/workflow/:type" element={<WorkflowPage />} />
-          <Route path="/investor/:id" element={<InvestorDetailPage />} />
+          <Route path="/" element={<Splash />} />
+          <Route path="/onboarding" element={<Onboarding />} />
+          <Route path="/home" element={<Home />} />
+          <Route path="/product" element={<Home />} />
+          <Route path="/filters" element={<Home />} />
+          <Route path="/basket" element={<Basket />} />
+          <Route path="/profile" element={<Profile />} />
+          <Route path="/personalization" element={<Personalization />} />
+          <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
-      </Shell>
-    </ErrorBoundary>
+      </BrowserRouter>
+    </AppProvider>
   );
 }

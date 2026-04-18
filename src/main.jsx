@@ -1,16 +1,22 @@
 import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
-import { BrowserRouter } from 'react-router-dom';
-import { AppProvider } from './store/appStore.jsx';
-import App from './App.jsx';
-import './styles/global.css';
+import { App } from './App.jsx';
+import './styles/index.css';
 
-createRoot(document.getElementById('root')).render(
-  <StrictMode>
-    <BrowserRouter>
-      <AppProvider>
-        <App />
-      </AppProvider>
-    </BrowserRouter>
-  </StrictMode>,
-);
+async function bootstrap() {
+  try {
+    const res = await fetch('/config.json');
+    if (res.ok) {
+      window.__SHOWROOM_CONFIG__ = await res.json();
+    }
+  } catch {
+    window.__SHOWROOM_CONFIG__ = {};
+  }
+  createRoot(document.getElementById('root')).render(
+    <StrictMode>
+      <App />
+    </StrictMode>,
+  );
+}
+
+bootstrap();
