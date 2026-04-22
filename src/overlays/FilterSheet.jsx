@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { useOverlay } from '../context/OverlayContext.jsx';
 import { useToast } from '../context/ToastContext.jsx';
 import { toPersianNum } from '../utils/format.js';
+import { Check } from '../components/icons.jsx';
 
 export function FilterSheet() {
   const { openSheetId, sheetData, closeSheet } = useOverlay();
@@ -60,9 +61,7 @@ export function FilterSheet() {
               onClick={() => toggleOpt(opt.k)}
             >
               <div className="fso-check">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3">
-                  <polyline points="20 6 9 17 4 12" />
-                </svg>
+                <Check strokeWidth={3} />
               </div>
               <span className="fso-label">{opt.label}</span>
               <span className="fso-count">{toPersianNum(opt.count)} مدل</span>
@@ -71,9 +70,7 @@ export function FilterSheet() {
         </div>
         <div className="fs-footer">
           <button className="fs-apply-btn" onClick={apply}>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" width="14" height="14">
-              <polyline points="20 6 9 17 4 12" />
-            </svg>
+            <Check size={14} strokeWidth={2.5} />
             <span id="fs-apply-text">
               {selCount > 0 ? `اعمال فیلتر (${toPersianNum(selCount)} مورد)` : 'اعمال فیلتر'}
             </span>

@@ -1,4 +1,5 @@
 import { useLegacyActions } from '../hooks/useLegacyActions.js';
+import { ChevronRight, Plus } from '../components/icons.jsx';
 
 export function TeamPage() {
   const { goBack, toast } = useLegacyActions();
@@ -6,11 +7,11 @@ export function TeamPage() {
     <>
           <div className="topbar">
             <button className="icon-btn" onClick={() => { goBack('dashboard') }}>
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M9 18l6-6-6-6" /></svg>
+              <ChevronRight />
             </button>
             <div className="ttl-wrap center"><h2>پرسنل</h2></div>
             <button className="icon-btn" onClick={() => { toast('فرم افزودن عضو باز شد') }}>
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><line x1="12" y1="5" x2="12" y2="19" /><line x1="5" y1="12" x2="19" y2="12" /></svg>
+              <Plus />
             </button>
           </div>
 

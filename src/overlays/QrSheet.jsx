@@ -1,5 +1,6 @@
 import { useOverlay } from '../context/OverlayContext.jsx';
 import { useToast } from '../context/ToastContext.jsx';
+import { Copy, Share } from '../components/icons.jsx';
 
 export function QrSheet() {
   const { openSheetId, closeSheet } = useOverlay();
@@ -115,11 +116,11 @@ export function QrSheet() {
           </div>
           <div style={{display:'grid', gridTemplateColumns:'1fr 1fr', gap:'10px'}}>
             <button className="btn outline" onClick={() => { toast('لینک در کلیپ‌بورد کپی شد') }}>
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" width="14" height="14"><rect x="9" y="9" width="13" height="13" rx="2" /><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" /></svg>
+              <Copy size={14} />
               کپی لینک
             </button>
             <button className="btn primary" onClick={() => { toast('ارسال به واتساپ…') }}>
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" width="14" height="14"><circle cx="18" cy="5" r="3" /><circle cx="6" cy="12" r="3" /><circle cx="18" cy="19" r="3" /><line x1="8.59" y1="13.51" x2="15.42" y2="17.49" /><line x1="15.41" y1="6.51" x2="8.59" y2="10.49" /></svg>
+              <Share size={14} />
               اشتراک‌گذاری
             </button>
           </div>

@@ -1,4 +1,5 @@
 import { useLegacyActions } from '../hooks/useLegacyActions.js';
+import { Share, Home, Copy, Cube, Warehouse3d, Check, ShoppingCart } from '../components/icons.jsx';
 
 export function ProductDetailPage() {
   const { addToCart, goBack, toast } = useLegacyActions();
@@ -9,7 +10,7 @@ export function ProductDetailPage() {
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M9 18l6-6-6-6" /></svg>
             </button>
             <button className="pd-topbtn" onClick={() => { toast('اشتراک‌گذاری لینک') }}>
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8"><circle cx="18" cy="5" r="3" /><circle cx="6" cy="12" r="3" /><circle cx="18" cy="19" r="3" /><line x1="8.59" y1="13.51" x2="15.42" y2="17.49" /><line x1="15.41" y1="6.51" x2="8.59" y2="10.49" /></svg>
+              <Share strokeWidth={1.8} />
             </button>
           </div>
           
@@ -88,7 +89,7 @@ export function ProductDetailPage() {
               {/* Header */}
               <div className="pd-header">
                 <div className="pd-brand">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" width="11" height="11"><path d="M2 20h20" /><path d="M5 20V9l6-3 6 3v11" /><path d="M9 13h2M9 17h2M13 13h2M13 17h2" /></svg>
+                  <Home size={11} strokeWidth={1.8} />
                   پارلاسرام
                 </div>
                 <h1 className="pd-title">کاشی خاک‌سفید — پله ۸۰۵</h1>
@@ -98,7 +99,7 @@ export function ProductDetailPage() {
                     <b>۷۲۰</b> عدد موجود
                   </span>
                   <span className="pd-sku" onClick={() => { toast('کپی شد') }}>
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" width="11" height="11"><rect x="9" y="9" width="13" height="13" rx="2" /><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" /></svg>
+                    <Copy size={11} strokeWidth={1.8} />
                     6029351028052120
                   </span>
                 </div>
@@ -129,7 +130,7 @@ export function ProductDetailPage() {
               <div className="pd-specs-grid">
                 <div className="pd-spec">
                   <div className="pds-icon">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z" /></svg>
+                    <Cube strokeWidth={1.8} />
                   </div>
                   <div className="pds-content">
                     <div className="pds-label">سایز</div>
@@ -192,7 +193,7 @@ export function ProductDetailPage() {
                 </div>
                 <div className="pd-spec">
                   <div className="pds-icon">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z" /><polyline points="3.27 6.96 12 12.01 20.73 6.96" /><line x1="12" y1="22.08" x2="12" y2="12" /></svg>
+                    <Warehouse3d strokeWidth={1.8} />
                   </div>
                   <div className="pds-content">
                     <div className="pds-label">کارخانه</div>
@@ -206,7 +207,7 @@ export function ProductDetailPage() {
               <div className="pd-pack-card">
                 <div className="pd-pack-row">
                   <div className="pdp-left">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" width="15" height="15"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z" /><polyline points="3.27 6.96 12 12.01 20.73 6.96" /><line x1="12" y1="22.08" x2="12" y2="12" /></svg>
+                    <Warehouse3d size={15} strokeWidth={1.8} />
                     <span>هر کارتن</span>
                   </div>
                   <span className="pdp-value">۳ عدد · ۱.۰۵ m²</span>
@@ -245,19 +246,19 @@ export function ProductDetailPage() {
               <div className="pd-section-title">ویژگی‌ها</div>
               <div className="pd-features">
                 <div className="pd-feat">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" width="14" height="14"><polyline points="20 6 9 17 4 12" /></svg>
+                  <Check size={14} strokeWidth={2.5} />
                   ضدلغزش — مناسب پله و نماهای خارجی
                 </div>
                 <div className="pd-feat">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" width="14" height="14"><polyline points="20 6 9 17 4 12" /></svg>
+                  <Check size={14} strokeWidth={2.5} />
                   مقاوم در برابر سایش و خش
                 </div>
                 <div className="pd-feat">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" width="14" height="14"><polyline points="20 6 9 17 4 12" /></svg>
+                  <Check size={14} strokeWidth={2.5} />
                   جذب آب کم‌تر از ۳٪
                 </div>
                 <div className="pd-feat">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" width="14" height="14"><polyline points="20 6 9 17 4 12" /></svg>
+                  <Check size={14} strokeWidth={2.5} />
                   گارانتی یک ساله کارخانه
                 </div>
               </div>
@@ -271,7 +272,7 @@ export function ProductDetailPage() {
               <span className="pcp-u">تومان</span>
             </div>
             <button className="pd-cta-btn" onClick={() => { addToCart(); goBack('shop'); }}>
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" width="16" height="16"><circle cx="9" cy="21" r="1" /><circle cx="20" cy="21" r="1" /><path d="M1 1h4l2.7 13.4a2 2 0 0 0 2 1.6h9.7a2 2 0 0 0 2-1.6L23 6H6" /></svg>
+              <ShoppingCart size={16} strokeWidth={2.2} />
               افزودن به سبد
             </button>
           </div></>

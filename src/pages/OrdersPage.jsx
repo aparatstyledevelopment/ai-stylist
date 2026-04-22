@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useLegacyActions } from '../hooks/useLegacyActions.js';
+import { Search, Check, Close, ChevronLeft } from '../components/icons.jsx';
 
 const ordersData = {
   mine: [
@@ -45,10 +46,7 @@ export function OrdersPage() {
           placeholder="جستجو در حواله‌ها…"
           onFocus={() => toast('جستجوی زنده فعال شد')}
         />
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
-          <circle cx="11" cy="11" r="8" />
-          <path d="m21 21-4.35-4.35" />
-        </svg>
+        <Search />
       </div>
 
       <div className="tabs-wrap">
@@ -73,9 +71,7 @@ export function OrdersPage() {
             <div className="zero-state">
               <div className="illus">
                 <div className="check-circle">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                    <polyline points="20 6 9 17 4 12" />
-                  </svg>
+                  <Check />
                 </div>
               </div>
               <h3>همه کارها تمومه!</h3>
@@ -129,19 +125,14 @@ export function OrdersPage() {
                     <div className="reason">{o.rejected}</div>
                   </div>
                   <div className="ico-r">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" width="10" height="10">
-                      <line x1="18" y1="6" x2="6" y2="18" />
-                      <line x1="6" y1="6" x2="18" y2="18" />
-                    </svg>
+                    <Close size={10} strokeWidth={3} />
                   </div>
                 </div>
               )}
               <div className="oc-footer">
                 <span className="oc-time">{o.meta || o.summary?.date || ''}</span>
                 <div className={`oc-arrow${!o.action ? ' ghost' : ''}`}>
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2">
-                    <polyline points="15 18 9 12 15 6" />
-                  </svg>
+                  <ChevronLeft strokeWidth={2.2} />
                 </div>
               </div>
             </div>

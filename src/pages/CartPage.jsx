@@ -1,4 +1,5 @@
 import { useLegacyActions } from '../hooks/useLegacyActions.js';
+import { Trash, Plus, Minus, AlertCircle, Check } from '../components/icons.jsx';
 
 export function CartPage() {
   const { cartStep, goBack, removeCartItem, selectCartMode, toast, updateCartCalc } = useLegacyActions();
@@ -29,7 +30,7 @@ export function CartPage() {
                   <div className="ci-ratio">هر کارتن ۳ عدد · هر پالت ۶۰ کارتن</div>
                 </div>
                 <button className="ci-remove" onClick={() => { removeCartItem('ci1') }} title="حذف">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" width="14" height="14"><polyline points="3 6 5 6 21 6" /><path d="M19 6l-1.45 13.16A2 2 0 0 1 15.56 21H8.44a2 2 0 0 1-1.99-1.84L5 6" /></svg>
+                  <Trash size={14} />
                 </button>
               </div>
               
@@ -40,7 +41,7 @@ export function CartPage() {
 
               <div className="ci-stepper">
                 <button className="ci-step-btn" onClick={() => { cartStep('ci1', 1) }}>
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" width="14" height="14"><line x1="12" y1="5" x2="12" y2="19" /><line x1="5" y1="12" x2="19" y2="12" /></svg>
+                  <Plus size={14} strokeWidth={2.5} />
                 </button>
                 <div className="ci-step-center">
                   <div className="ci-step-label">مقدار مورد نیاز <span>(عدد)</span></div>
@@ -48,12 +49,12 @@ export function CartPage() {
                   <div className="ci-step-stock">موجودی: <b>۷۲۰</b> عدد</div>
                 </div>
                 <button className="ci-step-btn" onClick={() => { cartStep('ci1', -1) }}>
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" width="14" height="14"><line x1="5" y1="12" x2="19" y2="12" /></svg>
+                  <Minus size={14} strokeWidth={2.5} />
                 </button>
               </div>
 
               <div className="ci-error">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" width="12" height="12"><circle cx="12" cy="12" r="10" /><line x1="12" y1="8" x2="12" y2="12" /><line x1="12" y1="16" x2="12.01" y2="16" /></svg>
+                <AlertCircle size={12} />
                 مقدار درخواستی بیشتر از موجودی است
               </div>
 
@@ -89,7 +90,7 @@ export function CartPage() {
                   <div className="ci-ratio">هر کارتن ۴ عدد · هر پالت ۶۰ کارتن</div>
                 </div>
                 <button className="ci-remove" onClick={() => { removeCartItem('ci2') }} title="حذف">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" width="14" height="14"><polyline points="3 6 5 6 21 6" /><path d="M19 6l-1.45 13.16A2 2 0 0 1 15.56 21H8.44a2 2 0 0 1-1.99-1.84L5 6" /></svg>
+                  <Trash size={14} />
                 </button>
               </div>
               
@@ -100,7 +101,7 @@ export function CartPage() {
 
               <div className="ci-stepper">
                 <button className="ci-step-btn" onClick={() => { cartStep('ci2', 1) }}>
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" width="14" height="14"><line x1="12" y1="5" x2="12" y2="19" /><line x1="5" y1="12" x2="19" y2="12" /></svg>
+                  <Plus size={14} strokeWidth={2.5} />
                 </button>
                 <div className="ci-step-center">
                   <div className="ci-step-label">تعداد پالت <span>(پالت کامل)</span></div>
@@ -108,12 +109,12 @@ export function CartPage() {
                   <div className="ci-step-stock">موجودی: <b>۱,۲۶۰</b> عدد</div>
                 </div>
                 <button className="ci-step-btn" onClick={() => { cartStep('ci2', -1) }}>
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" width="14" height="14"><line x1="5" y1="12" x2="19" y2="12" /></svg>
+                  <Minus size={14} strokeWidth={2.5} />
                 </button>
               </div>
 
               <div className="ci-error">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" width="12" height="12"><circle cx="12" cy="12" r="10" /><line x1="12" y1="8" x2="12" y2="12" /><line x1="12" y1="16" x2="12.01" y2="16" /></svg>
+                <AlertCircle size={12} />
                 مقدار درخواستی بیشتر از موجودی است
               </div>
 
@@ -148,7 +149,7 @@ export function CartPage() {
               </div>
             </div>
             <button className="cart-submit-btn" onClick={() => { toast('✓ سفارش ثبت شد') }}>
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" width="14" height="14"><polyline points="20 6 9 17 4 12" /></svg>
+              <Check size={14} strokeWidth={2.5} />
               ثبت سفارش
             </button>
           </div></>

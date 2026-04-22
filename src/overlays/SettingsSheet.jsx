@@ -1,5 +1,6 @@
 import { useOverlay } from '../context/OverlayContext.jsx';
 import { useToast } from '../context/ToastContext.jsx';
+import { ChevronLeft } from '../components/icons.jsx';
 
 export function SettingsSheet() {
   const { openSheetId, openSheet, closeSheet } = useOverlay();
@@ -48,9 +49,7 @@ export function SettingsSheet() {
               <div className="ssi-title">چرخه تایید سفارش</div>
               <div className="ssi-sub">۳ مرحله فعال</div>
             </div>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" width="14" height="14" className="ssi-chev">
-              <polyline points="15 18 9 12 15 6" />
-            </svg>
+            <ChevronLeft size={14} className="ssi-chev" />
           </div>
           <div className="ss-item" onClick={() => toast('اعلان‌ها')}>
             <div className="ssi-icon accent">
@@ -63,9 +62,7 @@ export function SettingsSheet() {
               <div className="ssi-title">اعلان‌ها</div>
               <div className="ssi-sub">پیامک، ایمیل، push</div>
             </div>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" width="14" height="14" className="ssi-chev">
-              <polyline points="15 18 9 12 15 6" />
-            </svg>
+            <ChevronLeft size={14} className="ssi-chev" />
           </div>
           <div className="ss-item" onClick={() => toast('پلن و صورت‌حساب')}>
             <div className="ssi-icon info">
@@ -78,9 +75,7 @@ export function SettingsSheet() {
               <div className="ssi-title">پلن و صورت‌حساب</div>
               <div className="ssi-sub">حرفه‌ای · تا ۲۵ فروردین</div>
             </div>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" width="14" height="14" className="ssi-chev">
-              <polyline points="15 18 9 12 15 6" />
-            </svg>
+            <ChevronLeft size={14} className="ssi-chev" />
           </div>
           <div className="ss-item" onClick={() => toast('راهنما و پشتیبانی')}>
             <div className="ssi-icon primary">
@@ -94,9 +89,7 @@ export function SettingsSheet() {
               <div className="ssi-title">راهنما و پشتیبانی</div>
               <div className="ssi-sub">چت با پشتیبان</div>
             </div>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" width="14" height="14" className="ssi-chev">
-              <polyline points="15 18 9 12 15 6" />
-            </svg>
+            <ChevronLeft size={14} className="ssi-chev" />
           </div>
         </div>
 

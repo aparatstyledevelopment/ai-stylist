@@ -1,4 +1,5 @@
 import { useLegacyActions } from '../hooks/useLegacyActions.js';
+import { Star, ChevronUp, Calendar, ChevronLeft, Check, Network, Users } from '../components/icons.jsx';
 
 export function DashboardPage() {
   const { goTo, openSheet, showRemoveModal, toast } = useLegacyActions();
@@ -17,7 +18,7 @@ export function DashboardPage() {
                   <span className="dbp2-role">صاحب برند</span>
                   <span className="dbp2-dot">·</span>
                   <span className="dbp2-plan">
-                    <svg viewBox="0 0 24 24" fill="currentColor" width="9" height="9"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4-6.2-4.5-6.2 4.5 2.4-7.4L2 9.4h7.6z" /></svg>
+                    <Star size={9} />
                     پلن حرفه‌ای
                   </span>
                 </div>
@@ -34,7 +35,7 @@ export function DashboardPage() {
               <div className="dhr-header">
                 <span className="dhr-label">درآمد این ماه</span>
                 <span className="dhr-trend">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" width="10" height="10"><polyline points="18 15 12 9 6 15" /></svg>
+                  <ChevronUp size={10} strokeWidth={2.5} />
                   +۸٪
                 </span>
               </div>
@@ -58,14 +59,14 @@ export function DashboardPage() {
             <div className="db-stats-v2">
               <div className="db-stat-v2 stat-accent">
                 <div className="dbs2-icon">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8"><path d="M20 7h-4V3H8v4H4c-1.1 0-2 .9-2 2v11c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V9c0-1.1-.9-2-2-2z" /></svg>
+                  <Calendar strokeWidth={1.8} />
                 </div>
                 <div className="dbs2-body">
                   <div className="dbs2-label">امروز</div>
                   <div className="dbs2-num">۱۲ <small>سفارش</small></div>
                 </div>
                 <div className="dbs2-badge up">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" width="9" height="9"><polyline points="18 15 12 9 6 15" /></svg>
+                  <ChevronUp size={9} strokeWidth={2.5} />
                   ۲۳٪
                 </div>
               </div>
@@ -116,7 +117,7 @@ export function DashboardPage() {
               </div>
               <div className="dsc-footer">
                 <span>مشاهده جزئیات پلن</span>
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" width="12" height="12"><polyline points="15 18 9 12 15 6" /></svg>
+                <ChevronLeft size={12} />
               </div>
             </div>
 
@@ -129,7 +130,7 @@ export function DashboardPage() {
               <div className="db-notif-v2 success">
                 <div className="dni2-indicator"></div>
                 <div className="dni2-icon">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" width="14" height="14"><polyline points="20 6 9 17 4 12" /></svg>
+                  <Check size={14} strokeWidth={2.2} />
                 </div>
                 <div className="dni2-body">
                   <div className="dni2-text">سفارش <b>#ord-96a1</b> توسط نماینده تایید شد</div>
@@ -139,7 +140,7 @@ export function DashboardPage() {
               <div className="db-notif-v2 accent">
                 <div className="dni2-indicator"></div>
                 <div className="dni2-icon">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" width="14" height="14"><path d="M20 7h-4V3H8v4H4c-1.1 0-2 .9-2 2v11c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V9c0-1.1-.9-2-2-2z" /></svg>
+                  <Calendar size={14} />
                 </div>
                 <div className="dni2-body">
                   <div className="dni2-text">سفارش جدید از <b>مارال رحیمی</b> به مبلغ ۵.۲ میلیون</div>
@@ -182,7 +183,7 @@ export function DashboardPage() {
             <div className="db-actions-grid-v2">
               <div className="db-action-v2" onClick={() => { goTo('b2b-connector') }}>
                 <div className="dav-icon info">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" width="18" height="18"><circle cx="12" cy="12" r="3" /><circle cx="12" cy="4" r="2" /><circle cx="4" cy="12" r="2" /><circle cx="20" cy="12" r="2" /><circle cx="12" cy="20" r="2" /><line x1="12" y1="6" x2="12" y2="9" /><line x1="6" y1="12" x2="9" y2="12" /><line x1="15" y1="12" x2="18" y2="12" /><line x1="12" y1="15" x2="12" y2="18" /></svg>
+                  <Network size={18} strokeWidth={1.8} />
                 </div>
                 <div className="dav-info">
                   <div className="dav-title">اتصال به کارخانه</div>
@@ -191,7 +192,7 @@ export function DashboardPage() {
               </div>
               <div className="db-action-v2" onClick={() => { goTo('team') }}>
                 <div className="dav-icon primary">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" width="18" height="18"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" /><circle cx="9" cy="7" r="4" /><path d="M23 21v-2a4 4 0 0 0-3-3.87" /><path d="M16 3.13a4 4 0 0 1 0 7.75" /></svg>
+                  <Users size={18} strokeWidth={1.8} />
                 </div>
                 <div className="dav-info">
                   <div className="dav-title">پرسنل</div>
