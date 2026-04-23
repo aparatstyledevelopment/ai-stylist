@@ -582,8 +582,118 @@
   }
   .info-banner .info { flex:1; text-align:right; }
   .info-banner .info .title { font-size:13px; font-weight:500; letter-spacing:-0.01em; }
-  .info-banner .info .sub { 
-    font-size:11px; margin-top:4px; 
+  .info-banner .info .sub {
+    font-size:11px; margin-top:4px;
     line-height:1.6; color:var(--info-800); opacity:.8;
+  }
+
+  /* ============ ONBOARDING / EMPTY MODE ============ */
+
+  /* Toggle row in dashboard */
+  .ob-mode-row {
+    display: flex; align-items: center; gap: 12px;
+    margin: 0 20px 10px;
+    padding: 12px 14px;
+    background: var(--bg);
+    border: 1px solid var(--border-soft);
+    border-radius: var(--r-lg);
+    cursor: pointer;
+    transition: background .15s;
+  }
+  .ob-mode-row:hover { background: var(--surf); }
+  .ob-mode-info { flex: 1; text-align: right; }
+  .ob-mode-label { font-size: 12.5px; font-weight: 500; color: var(--text); letter-spacing: -0.01em; }
+  .ob-mode-sub   { font-size: 11px; color: var(--text-muted); margin-top: 2px; letter-spacing: -0.01em; }
+
+  /* iOS-style toggle switch */
+  .ob-toggle {
+    width: 44px; height: 26px; border-radius: 13px;
+    background: var(--muted); position: relative;
+    flex-shrink: 0; transition: background .22s;
+  }
+  .ob-toggle::after {
+    content: ''; position: absolute;
+    width: 20px; height: 20px; border-radius: 50%;
+    background: #fff; top: 3px; right: 3px;
+    transition: transform .22s cubic-bezier(.2,.8,.25,1);
+    box-shadow: 0 1px 4px rgba(0,0,0,0.18);
+  }
+  .ob-toggle.on { background: var(--accent-500); }
+  .ob-toggle.on::after { transform: translateX(-18px); }
+
+  /* Welcome card */
+  .ob-welcome {
+    margin: 0 20px 10px;
+    background: linear-gradient(135deg, var(--primary-700) 0%, var(--primary-600) 100%);
+    border-radius: var(--r-lg);
+    padding: 20px;
+    color: #fff;
+  }
+  .ob-welcome-eyebrow { font-size: 11px; opacity: .65; margin-bottom: 4px; letter-spacing: -0.01em; }
+  .ob-welcome-title   { font-size: 18px; font-weight: 700; letter-spacing: -0.03em; margin-bottom: 4px; }
+  .ob-welcome-sub     { font-size: 12px; opacity: .7; margin-bottom: 16px; letter-spacing: -0.01em; }
+  .ob-progress-track  {
+    background: rgba(255,255,255,0.2); border-radius: var(--r-pill);
+    height: 5px; margin-bottom: 6px;
+  }
+  .ob-progress-fill {
+    height: 100%; border-radius: var(--r-pill);
+    background: rgba(255,255,255,0.85);
+    transition: width .4s;
+  }
+  .ob-progress-label  { font-size: 10.5px; opacity: .55; letter-spacing: -0.01em; }
+
+  /* Setup steps card */
+  .ob-steps {
+    margin: 0 20px 10px;
+    background: var(--bg);
+    border-radius: var(--r-lg);
+    overflow: hidden;
+    border: 1px solid var(--border-soft);
+    box-shadow: var(--s-1);
+  }
+  .ob-step {
+    display: flex; align-items: center; gap: 12px;
+    padding: 14px 16px;
+    border-bottom: 1px solid var(--border-soft);
+    cursor: pointer; transition: background .15s;
+  }
+  .ob-step.last { border-bottom: none; }
+  .ob-step:hover { background: var(--surf); }
+  .ob-step-ico {
+    width: 38px; height: 38px; border-radius: var(--r-md);
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  .ob-step-ico.info    { background: var(--info-50);    color: var(--info-600); }
+  .ob-step-ico.accent  { background: var(--accent-50);  color: var(--accent-600); }
+  .ob-step-ico.success { background: var(--success-50); color: var(--success-600); }
+  .ob-step-ico.primary { background: var(--primary-100); color: var(--primary-700); }
+  .ob-step-body { flex: 1; text-align: right; min-width: 0; }
+  .ob-step-title { font-size: 13.5px; font-weight: 500; color: var(--text); letter-spacing: -0.01em; }
+  .ob-step-sub   { font-size: 11px; color: var(--text-muted); margin-top: 2px; letter-spacing: -0.01em; }
+  .ob-step-chev  { color: var(--text-muted); flex-shrink: 0; }
+
+  /* Full-page empty state */
+  .ob-empty {
+    flex: 1;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    padding: 32px 28px; text-align: center;
+  }
+  .ob-empty-illus {
+    width: 68px; height: 68px; border-radius: var(--r-lg);
+    background: var(--surf-2); color: var(--text-muted);
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 18px;
+  }
+  .ob-empty h3 {
+    font-size: 16px; font-weight: 600; letter-spacing: -0.02em;
+    color: var(--text); margin: 0 0 8px;
+  }
+  .ob-empty p {
+    font-size: 13px; color: var(--text-muted);
+    line-height: 1.65; letter-spacing: -0.01em;
+    margin: 0 0 24px;
   }
 

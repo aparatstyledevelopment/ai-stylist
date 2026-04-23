@@ -1,9 +1,28 @@
 import { useLegacyActions } from '../hooks/useLegacyActions.js';
 import { Info, TrendingUp } from '../components/icons.jsx';
 import { PageTopBar } from '../components/PageTopBar.jsx';
+import { useOnboarding } from '../context/OnboardingContext.jsx';
 
 export function PriceManagementPage() {
   const { calcProfit, goBack, savePriceNew } = useLegacyActions();
+  const { isEmpty } = useOnboarding();
+
+  if (isEmpty) return (
+    <>
+      <PageTopBar onBack={() => goBack('warehouse')} title="قیمت فروش" />
+      <div className="ob-empty">
+        <div className="ob-empty-illus">
+          <TrendingUp size={32} strokeWidth={1.4} />
+        </div>
+        <h3>هنوز کاشیی برای قیمت‌گذاری نیست</h3>
+        <p>ابتدا کاشی‌ها رو به انبار اضافه کن،<br />بعد قیمت فروش بذار.</p>
+        <button className="btn primary" onClick={() => goBack('warehouse')}>
+          برو به انبار
+        </button>
+      </div>
+    </>
+  );
+
   return (
     <>
           <PageTopBar onBack={() => goBack('warehouse')} title="قیمت فروش" />

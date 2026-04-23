@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { NavigationProvider, useNavigation } from './context/NavigationContext.jsx';
 import { ToastProvider } from './context/ToastContext.jsx';
 import { OverlayProvider } from './context/OverlayContext.jsx';
+import { OnboardingProvider } from './context/OnboardingContext.jsx';
 import { StatusBar } from './components/StatusBar.jsx';
 import { GlobalNav } from './components/GlobalNav.jsx';
 import { InfoLabel } from './components/InfoLabel.jsx';
@@ -128,12 +129,14 @@ export function App() {
     <NavigationProvider>
       <ToastProvider>
         <OverlayProvider>
-          <InfoLabel />
-          <ResetButton />
-          <div className={`device-frame-wrap mode-${mode}`}>
-            <DeviceShell mode={mode} />
-          </div>
-          <DeviceToggle mode={mode} onChange={setMode} />
+          <OnboardingProvider>
+            <InfoLabel />
+            <ResetButton />
+            <div className={`device-frame-wrap mode-${mode}`}>
+              <DeviceShell mode={mode} />
+            </div>
+            <DeviceToggle mode={mode} onChange={setMode} />
+          </OnboardingProvider>
         </OverlayProvider>
       </ToastProvider>
     </NavigationProvider>

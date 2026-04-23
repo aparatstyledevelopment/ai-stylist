@@ -2,9 +2,25 @@ import { useLegacyActions } from '../hooks/useLegacyActions.js';
 import { Search, ChevronDown, ShoppingCart } from '../components/icons.jsx';
 import { ShopCard } from '../components/ShopCard.jsx';
 import { PRODUCTS } from '../data/products.js';
+import { useOnboarding } from '../context/OnboardingContext.jsx';
 
 export function ShopPage() {
   const { addToCart, goTo, openFilterSheet } = useLegacyActions();
+  const { isEmpty } = useOnboarding();
+
+  if (isEmpty) return (
+    <div className="ob-empty">
+      <div className="ob-empty-illus">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.4" width="32" height="32"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+      </div>
+      <h3>ویترین خالیه</h3>
+      <p>بعد از قیمت‌گذاری روی کاشی‌ها،<br />محصولات اینجا ظاهر میشن.</p>
+      <button className="btn primary" onClick={() => goTo('price-management')}>
+        قیمت‌گذاری محصولات
+      </button>
+    </div>
+  );
+
   return (
     <>
           <div className="shop-header">
