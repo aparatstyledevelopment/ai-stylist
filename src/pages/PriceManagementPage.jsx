@@ -1,17 +1,12 @@
 import { useLegacyActions } from '../hooks/useLegacyActions.js';
-import { ChevronRight, Info, TrendingUp } from '../components/icons.jsx';
+import { Info, TrendingUp } from '../components/icons.jsx';
+import { PageTopBar } from '../components/PageTopBar.jsx';
 
 export function PriceManagementPage() {
   const { calcProfit, goBack, savePriceNew } = useLegacyActions();
   return (
     <>
-          <div className="topbar">
-            <button className="icon-btn" onClick={() => { goBack('warehouse') }}>
-              <ChevronRight />
-            </button>
-            <div className="ttl-wrap center"><h2>قیمت فروش</h2></div>
-            <div style={{width:'36px'}}></div>
-          </div>
+          <PageTopBar onBack={() => goBack('warehouse')} title="قیمت فروش" />
 
           <div className="content">
             {/* Pending notice banner */}

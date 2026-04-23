@@ -1,17 +1,12 @@
 import { useLegacyActions } from '../hooks/useLegacyActions.js';
 import { Edit, Plus, Minus, Check, ArrowUp, ArrowDown } from '../components/icons.jsx';
+import { PageTopBar } from '../components/PageTopBar.jsx';
 
 export function TileDetailPage() {
   const { goBack, quickAdd, toast } = useLegacyActions();
   return (
     <>
-          <div className="topbar">
-            <button className="icon-btn" onClick={() => { goBack('warehouse') }}>
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M9 18l6-6-6-6" /></svg>
-            </button>
-            <div className="ttl-wrap center"><h2>جزئیات کاشی</h2></div>
-            <div style={{width:'36px'}}></div>
-          </div>
+          <PageTopBar onBack={() => goBack('warehouse')} title="جزئیات کاشی" />
 
           <div className="content" style={{padding:'12px 0 32px'}}>
             

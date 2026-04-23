@@ -1,19 +1,20 @@
 import { useLegacyActions } from '../hooks/useLegacyActions.js';
 import { World, ChevronDown, Check } from '../components/icons.jsx';
+import { PageTopBar } from '../components/PageTopBar.jsx';
 
 export function OrderDetailPage() {
   const { approveOrder, goBack, rejectOrder, toast, toggleTimeline } = useLegacyActions();
   return (
     <>
-          <div className="topbar">
-            <button className="icon-btn" onClick={() => { goBack('orders') }}>
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M9 18l6-6-6-6" /></svg>
-            </button>
-            <div className="ttl-wrap center"><h2>جزئیات حواله</h2></div>
-            <button className="icon-btn" onClick={() => { toast('گزینه‌های بیشتر') }}>
-              <svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="5" r="1.8" /><circle cx="12" cy="12" r="1.8" /><circle cx="12" cy="19" r="1.8" /></svg>
-            </button>
-          </div>
+          <PageTopBar
+            onBack={() => goBack('orders')}
+            title="جزئیات حواله"
+            right={
+              <button className="icon-btn" onClick={() => toast('گزینه‌های بیشتر')}>
+                <svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="5" r="1.8" /><circle cx="12" cy="12" r="1.8" /><circle cx="12" cy="19" r="1.8" /></svg>
+              </button>
+            }
+          />
 
           <div className="content" style={{paddingTop:'0'}}>
             <div className="invoice-sheet">

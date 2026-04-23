@@ -1,17 +1,12 @@
 import { useLegacyActions } from '../hooks/useLegacyActions.js';
 import { Network, Link, Info } from '../components/icons.jsx';
+import { PageTopBar } from '../components/PageTopBar.jsx';
 
 export function B2BConnectorPage() {
   const { goBack, simulateB2bConnect } = useLegacyActions();
   return (
     <>
-          <div className="topbar">
-            <button className="icon-btn" onClick={() => { goBack('dashboard') }}>
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M9 18l6-6-6-6" /></svg>
-            </button>
-            <div className="ttl-wrap center"><h2>شبکه تأمین‌کنندگان</h2></div>
-            <div style={{width:'36px'}}></div>
-          </div>
+          <PageTopBar onBack={() => goBack('dashboard')} title="شبکه تأمین‌کنندگان" />
 
           <div className="content" style={{paddingTop:'16px'}}>
             

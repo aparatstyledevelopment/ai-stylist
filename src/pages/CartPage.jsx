@@ -1,17 +1,12 @@
 import { useLegacyActions } from '../hooks/useLegacyActions.js';
 import { Trash, Plus, Minus, AlertCircle, Check } from '../components/icons.jsx';
+import { PageTopBar } from '../components/PageTopBar.jsx';
 
 export function CartPage() {
   const { cartStep, goBack, removeCartItem, selectCartMode, toast, updateCartCalc } = useLegacyActions();
   return (
     <>
-          <div className="topbar">
-            <button className="icon-btn" onClick={() => { goBack('shop') }}>
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M9 18l6-6-6-6" /></svg>
-            </button>
-            <div className="ttl-wrap center"><h2>سبد خرید</h2></div>
-            <div style={{width:'36px'}}></div>
-          </div>
+          <PageTopBar onBack={() => goBack('shop')} title="سبد خرید" />
 
           <div className="content" style={{padding:'12px 0 240px'}}>
             

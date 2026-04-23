@@ -1,17 +1,12 @@
 import { useLegacyActions } from '../hooks/useLegacyActions.js';
 import { Close, World, Check, Search, ChevronLeft } from '../components/icons.jsx';
+import { PageTopBar } from '../components/PageTopBar.jsx';
 
 export function AddTilePage() {
   const { chipMulti, chipSelect, goBack, nextStep, prevStep, saveTile, selectSize, selectVisCard, toast } = useLegacyActions();
   return (
     <>
-          <div className="topbar">
-            <button className="icon-btn" onClick={() => { goBack('warehouse') }}>
-              <Close />
-            </button>
-            <div className="ttl-wrap center"><h2>کاشی جدید</h2></div>
-            <div style={{width:'36px'}}></div>
-          </div>
+          <PageTopBar onBack={() => goBack('warehouse')} title="کاشی جدید" backIcon={<Close />} />
 
           <div className="stepper">
             <div className="stepper-bar">

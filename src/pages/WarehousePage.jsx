@@ -1,5 +1,7 @@
 import { useLegacyActions } from '../hooks/useLegacyActions.js';
-import { Search, Plus, ChevronLeft, Upload, Close, User, ChevronDown, Check } from '../components/icons.jsx';
+import { Search, Plus, Upload, Close, User, ChevronDown, ChevronLeft, Check } from '../components/icons.jsx';
+import { TileCard } from '../components/TileCard.jsx';
+import { TILES } from '../data/tiles.js';
 
 export function WarehousePage() {
   const { closeWhMenu, confirmAssignChanges, goTo, handleTileClick, resetAiUpload, selectRep, toggleAssignMode, toggleRepDropdown, toggleWhMenu } = useLegacyActions();
@@ -139,101 +141,9 @@ export function WarehousePage() {
               </div>
             </div>
 
-            <div className="tile-card" data-tile-id="t1" data-assigned="true" onClick={(e) => { handleTileClick(e, 'tile-detail') }}>
-              <div className="meta-chips">
-                <span className="meta-chip sku">6029301028342120</span>
-                <span className="meta-chip">۱۰۰×۳۰</span>
-              </div>
-              <div className="title-wrap">کاشی سرامیک — پله ۸۳۴</div>
-              <div className="stats-row">
-                <div className="sub-stats">
-                  <span className="sub-cell"><span className="sub-dot physical"></span><span className="sub-lbl">فیزیکی</span><span className="sub-val">۱۲۶</span></span>
-                  <span className="sub-cell"><span className="sub-dot freeze"></span><span className="sub-lbl">فریز</span><span className="sub-val">۱۲</span></span>
-                </div>
-                <span className="available-chip">
-                  <span className="ac-val">۱۱۴</span>
-                  <span className="ac-lbl">قابل فروش</span>
-                </span>
-              </div>
-              <div className="assign-check">
-                <Check strokeWidth={3} />
-              </div>
-              <div className="tc-arrow">
-                <ChevronLeft size={16} />
-              </div>
-            </div>
-
-            <div className="tile-card" data-tile-id="t2" data-assigned="true" onClick={(e) => { handleTileClick(e, 'tile-detail') }}>
-              <div className="meta-chips">
-                <span className="meta-chip sku">6029201024802120</span>
-                <span className="meta-chip">۱۰۰×۳۵</span>
-              </div>
-              <div className="title-wrap">کاشی خاک‌سفید — زیرپله ۴۸۰</div>
-              <div className="stats-row">
-                <div className="sub-stats">
-                  <span className="sub-cell"><span className="sub-dot physical"></span><span className="sub-lbl">فیزیکی</span><span className="sub-val">۱۶۸</span></span>
-                  <span className="sub-cell"><span className="sub-dot freeze"></span><span className="sub-lbl">فریز</span><span className="sub-val">۰</span></span>
-                </div>
-                <span className="available-chip">
-                  <span className="ac-val">۱۶۸</span>
-                  <span className="ac-lbl">قابل فروش</span>
-                </span>
-              </div>
-              <div className="assign-check">
-                <Check strokeWidth={3} />
-              </div>
-              <div className="tc-arrow">
-                <ChevronLeft size={16} />
-              </div>
-            </div>
-
-            <div className="tile-card" data-tile-id="t3" data-assigned="false" onClick={(e) => { handleTileClick(e, 'tile-detail') }}>
-              <div className="meta-chips">
-                <span className="meta-chip sku">6029201030302120</span>
-                <span className="meta-chip">۱۰۰×۳۰</span>
-              </div>
-              <div className="title-wrap">کاشی خاک‌سفید — پله ۸۳۰ پرسلان مات ممتاز</div>
-              <div className="stats-row">
-                <div className="sub-stats">
-                  <span className="sub-cell"><span className="sub-dot physical"></span><span className="sub-lbl">فیزیکی</span><span className="sub-val">۱۵</span></span>
-                  <span className="sub-cell"><span className="sub-dot freeze"></span><span className="sub-lbl">فریز</span><span className="sub-val">۵</span></span>
-                </div>
-                <span className="available-chip low">
-                  <span className="ac-val">۱۰</span>
-                  <span className="ac-lbl">قابل فروش</span>
-                </span>
-              </div>
-              <div className="assign-check">
-                <Check strokeWidth={3} />
-              </div>
-              <div className="tc-arrow">
-                <ChevronLeft size={16} />
-              </div>
-            </div>
-
-            <div className="tile-card" data-tile-id="t4" data-assigned="false" onClick={(e) => { handleTileClick(e, 'tile-detail') }}>
-              <div className="meta-chips">
-                <span className="meta-chip sku">6029301028822120</span>
-                <span className="meta-chip">۱۲۰×۶۰</span>
-              </div>
-              <div className="title-wrap">کاشی پرسلان کلکته گلد لعاب‌دار صیقلی</div>
-              <div className="stats-row">
-                <div className="sub-stats">
-                  <span className="sub-cell"><span className="sub-dot physical"></span><span className="sub-lbl">فیزیکی</span><span className="sub-val">۹۲</span></span>
-                  <span className="sub-cell"><span className="sub-dot freeze"></span><span className="sub-lbl">فریز</span><span className="sub-val">۸</span></span>
-                </div>
-                <span className="available-chip">
-                  <span className="ac-val">۸۴</span>
-                  <span className="ac-lbl">قابل فروش</span>
-                </span>
-              </div>
-              <div className="assign-check">
-                <Check strokeWidth={3} />
-              </div>
-              <div className="tc-arrow">
-                <ChevronLeft size={16} />
-              </div>
-            </div>
+            {TILES.map((t) => (
+              <TileCard key={t.id} {...t} onPress={(e) => handleTileClick(e, 'tile-detail')} />
+            ))}
           </div>
 
           {/* ASSIGN ACTION BAR */}
