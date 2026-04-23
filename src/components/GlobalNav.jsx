@@ -1,4 +1,5 @@
 import { useNavigation } from '../context/NavigationContext.jsx';
+import { Calendar } from './icons.jsx';
 
 const NAV_MAP = {
   dashboard: 'dashboard',
@@ -74,9 +75,7 @@ export function GlobalNav() {
       key: 'orders',
       label: 'حواله',
       outline: (
-        <svg className="ni-outline" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
-          <path d="M20 7h-4V3H8v4H4c-1.1 0-2 .9-2 2v11c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V9c0-1.1-.9-2-2-2z" />
-        </svg>
+        <Calendar className="ni-outline" strokeWidth={1.8} />
       ),
       filled: (
         <svg className="ni-filled" viewBox="0 0 24 24" fill="currentColor">

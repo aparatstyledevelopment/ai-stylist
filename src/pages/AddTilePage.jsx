@@ -1,16 +1,12 @@
 import { useLegacyActions } from '../hooks/useLegacyActions.js';
+import { Close, World, Check, Search, ChevronLeft } from '../components/icons.jsx';
+import { PageTopBar } from '../components/PageTopBar.jsx';
 
 export function AddTilePage() {
   const { chipMulti, chipSelect, goBack, nextStep, prevStep, saveTile, selectSize, selectVisCard, toast } = useLegacyActions();
   return (
     <>
-          <div className="topbar">
-            <button className="icon-btn" onClick={() => { goBack('warehouse') }}>
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><line x1="18" y1="6" x2="6" y2="18" /><line x1="6" y1="6" x2="18" y2="18" /></svg>
-            </button>
-            <div className="ttl-wrap center"><h2>کاشی جدید</h2></div>
-            <div style={{width:'36px'}}></div>
-          </div>
+          <PageTopBar onBack={() => goBack('warehouse')} title="کاشی جدید" backIcon={<Close />} />
 
           <div className="stepper">
             <div className="stepper-bar">
@@ -214,14 +210,14 @@ export function AddTilePage() {
               <div className="visibility-group">
                 <div className="vis-card" onClick={(e) => { selectVisCard(e, 'all') }}>
                   <div className="ico-wrap">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8"><circle cx="12" cy="12" r="10" /><line x1="2" y1="12" x2="22" y2="12" /><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" /></svg>
+                    <World strokeWidth={1.8} />
                   </div>
                   <div className="text">
                     <div className="title">نمایش به همه</div>
                     <div className="sub">تمام مشتریان فروشگاه می‌تونن این کاشی رو ببینن و سفارش بدن</div>
                   </div>
                   <div className="check">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3"><polyline points="20 6 9 17 4 12" /></svg>
+                    <Check strokeWidth={3} />
                   </div>
                 </div>
 
@@ -234,14 +230,14 @@ export function AddTilePage() {
                     <div className="sub">فقط مشتریان مشخص‌شده می‌تونن ببینن (مناسب حواله‌های ویژه)</div>
                   </div>
                   <div className="check">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3"><polyline points="20 6 9 17 4 12" /></svg>
+                    <Check strokeWidth={3} />
                   </div>
                 </div>
               </div>
 
               <div className="search" id="customer-search" style={{margin:'0 24px 24px'}}>
                 <input placeholder="جستجوی مشتری برای اضافه کردن…" />
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="11" cy="11" r="8" /><path d="m21 21-4.35-4.35" /></svg>
+                <Search />
               </div>
             </div>
 
@@ -251,10 +247,10 @@ export function AddTilePage() {
             <button className="btn outline" id="step-back" style={{flex:'1', display:'none'}} onClick={() => { prevStep() }}>قبلی</button>
             <button className="btn primary" id="step-next" style={{flex:'2'}} onClick={() => { nextStep() }}>
               ادامه
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" width="14" height="14"><polyline points="15 18 9 12 15 6" /></svg>
+              <ChevronLeft size={14} strokeWidth={2.5} />
             </button>
             <button className="btn accent" id="step-submit" style={{flex:'2', display:'none'}} onClick={() => { saveTile() }}>
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" width="14" height="14"><polyline points="20 6 9 17 4 12" /></svg>
+              <Check size={14} strokeWidth={2.5} />
               ثبت کاشی
             </button>
           </div></>

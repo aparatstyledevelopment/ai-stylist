@@ -1,16 +1,12 @@
 import { useLegacyActions } from '../hooks/useLegacyActions.js';
+import { Sparkle, Close } from '../components/icons.jsx';
+import { PageTopBar } from '../components/PageTopBar.jsx';
 
 export function ExcelAiPage() {
   const { goBack, resetAiUpload, simulateAiUpload, submitAiUpload, toggleAnalyze } = useLegacyActions();
   return (
     <>
-          <div className="topbar">
-            <button className="icon-btn" onClick={() => { goBack('warehouse'); resetAiUpload(); }}>
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M9 18l6-6-6-6" /></svg>
-            </button>
-            <div className="ttl-wrap center"><h2>بروزرسانی هوشمند</h2></div>
-            <div style={{width:'36px'}}></div>
-          </div>
+          <PageTopBar onBack={() => { goBack('warehouse'); resetAiUpload(); }} title="بروزرسانی هوشمند" />
 
           <div className="content" style={{paddingTop:'8px'}}>
             
@@ -20,7 +16,7 @@ export function ExcelAiPage() {
                 <div className="ai-brand">AVAL AI ENGINE</div>
               </div>
               <div className="ai-ico">
-                <svg viewBox="0 0 24 24" fill="#fff" stroke="none"><path d="M12 2l1.8 5.4L19 9l-5.2 1.6L12 16l-1.8-5.4L5 9l5.2-1.6z" /><path d="M19 14l.9 2.7L22 18l-2.1.3L19 21l-.9-2.7L16 18l2.1-.3z" opacity=".7" /></svg>
+                <Sparkle fill="#fff" stroke="none" />
               </div>
             </div>
 
@@ -45,7 +41,7 @@ export function ExcelAiPage() {
                     <div className="ai-file-size">۲۴ ردیف · ۵ ستون شناسایی شد</div>
                   </div>
                   <button className="ai-file-close" onClick={() => { resetAiUpload() }}>
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" width="14" height="14"><line x1="18" y1="6" x2="6" y2="18" /><line x1="6" y1="6" x2="18" y2="18" /></svg>
+                    <Close size={14} />
                   </button>
                 </div>
                 

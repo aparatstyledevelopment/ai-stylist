@@ -1,16 +1,12 @@
 import { useLegacyActions } from '../hooks/useLegacyActions.js';
+import { Star, Users, Check } from '../components/icons.jsx';
+import { PageTopBar } from '../components/PageTopBar.jsx';
 
 export function SubscriptionPage() {
   const { goBack, toast } = useLegacyActions();
   return (
     <>
-          <div className="topbar">
-            <button className="icon-btn" onClick={() => { goBack('dashboard') }}>
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M9 18l6-6-6-6" /></svg>
-            </button>
-            <div className="ttl-wrap center"><h2>وضعیت اشتراک</h2></div>
-            <div style={{width:'36px'}}></div>
-          </div>
+          <PageTopBar onBack={() => goBack('dashboard')} title="وضعیت اشتراک" />
           
           <div className="content">
             {/* Current plan hero */}
@@ -21,7 +17,7 @@ export function SubscriptionPage() {
                 <div>
                   <div className="sh-label">پلن فعلی</div>
                   <div className="sh-title">
-                    <svg viewBox="0 0 24 24" fill="currentColor" width="14" height="14"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4-6.2-4.5-6.2 4.5 2.4-7.4L2 9.4h7.6z" /></svg>
+                    <Star size={14} />
                     حرفه‌ای
                   </div>
                 </div>
@@ -62,7 +58,7 @@ export function SubscriptionPage() {
               <div className="sub-usage-item">
                 <div className="suu-head">
                   <div className="suu-label">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" width="15" height="15"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" /><circle cx="9" cy="7" r="4" /><path d="M23 21v-2a4 4 0 0 0-3-3.87" /><path d="M16 3.13a4 4 0 0 1 0 7.75" /></svg>
+                    <Users size={15} strokeWidth={1.8} />
                     تامین‌کنندگان متصل
                   </div>
                   <div className="suu-value"><b>۲</b> <small>/ ∞</small></div>
@@ -106,27 +102,27 @@ export function SubscriptionPage() {
             <div className="sub-section-title">قابلیت‌های فعال</div>
             <div className="sub-features">
               <div className="sub-feat-chip">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" width="12" height="12"><polyline points="20 6 9 17 4 12" /></svg>
+                <Check size={12} strokeWidth={2.5} />
                 مدیریت نقش‌ها
               </div>
               <div className="sub-feat-chip">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" width="12" height="12"><polyline points="20 6 9 17 4 12" /></svg>
+                <Check size={12} strokeWidth={2.5} />
                 کارتابل تاییدیه
               </div>
               <div className="sub-feat-chip">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" width="12" height="12"><polyline points="20 6 9 17 4 12" /></svg>
+                <Check size={12} strokeWidth={2.5} />
                 قیمت‌گذاری اختصاصی
               </div>
               <div className="sub-feat-chip">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" width="12" height="12"><polyline points="20 6 9 17 4 12" /></svg>
+                <Check size={12} strokeWidth={2.5} />
                 ایمپورت اکسل
               </div>
               <div className="sub-feat-chip">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" width="12" height="12"><polyline points="20 6 9 17 4 12" /></svg>
+                <Check size={12} strokeWidth={2.5} />
                 پنل اختصاصی برند
               </div>
               <div className="sub-feat-chip">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" width="12" height="12"><polyline points="20 6 9 17 4 12" /></svg>
+                <Check size={12} strokeWidth={2.5} />
                 پشتیبانی ویژه
               </div>
             </div>

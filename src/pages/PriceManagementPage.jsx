@@ -1,22 +1,18 @@
 import { useLegacyActions } from '../hooks/useLegacyActions.js';
+import { Info, TrendingUp } from '../components/icons.jsx';
+import { PageTopBar } from '../components/PageTopBar.jsx';
 
 export function PriceManagementPage() {
   const { calcProfit, goBack, savePriceNew } = useLegacyActions();
   return (
     <>
-          <div className="topbar">
-            <button className="icon-btn" onClick={() => { goBack('warehouse') }}>
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M9 18l6-6-6-6" /></svg>
-            </button>
-            <div className="ttl-wrap center"><h2>قیمت فروش</h2></div>
-            <div style={{width:'36px'}}></div>
-          </div>
+          <PageTopBar onBack={() => goBack('warehouse')} title="قیمت فروش" />
 
           <div className="content">
             {/* Pending notice banner */}
             <div className="pm-notice">
               <div className="pm-notice-ico">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" width="14" height="14"><circle cx="12" cy="12" r="10" /><line x1="12" y1="16" x2="12" y2="12" /><line x1="12" y1="8" x2="12.01" y2="8" /></svg>
+                <Info size={14} />
               </div>
               <div className="pm-notice-txt">
                 <b>۳ کاشی منتظر قیمت‌گذاری</b>
@@ -65,7 +61,7 @@ export function PriceManagementPage() {
               </div>
               <div className="pm-profit-wrap">
                 <span className="pm-profit-chip">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" width="10" height="10"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18" /><polyline points="17 6 23 6 23 12" /></svg>
+                  <TrendingUp size={10} strokeWidth={2.5} />
                   سود ۲۱٪
                 </span>
                 <span className="pm-profit-amt">۱۳۰,۰۰۰ <small>ت</small></span>

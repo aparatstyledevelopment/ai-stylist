@@ -1,4 +1,7 @@
 import { useLegacyActions } from '../hooks/useLegacyActions.js';
+import { Search, Plus, Upload, Close, User, ChevronDown, ChevronLeft, Check } from '../components/icons.jsx';
+import { TileCard } from '../components/TileCard.jsx';
+import { TILES } from '../data/tiles.js';
 
 export function WarehousePage() {
   const { closeWhMenu, confirmAssignChanges, goTo, handleTileClick, resetAiUpload, selectRep, toggleAssignMode, toggleRepDropdown, toggleWhMenu } = useLegacyActions();
@@ -9,7 +12,7 @@ export function WarehousePage() {
           <div className="wh-topbar">
             <div className="search" id="wh-search">
               <input placeholder="جستجو کالا (نام، SKU…)" />
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="11" cy="11" r="8" /><path d="m21 21-4.35-4.35" /></svg>
+              <Search />
             </div>
             <button className="wh-menu-btn" id="wh-menu-btn" onClick={() => { toggleWhMenu() }} aria-label="منو">
               <svg className="wmb-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><line x1="3" y1="6" x2="21" y2="6" /><line x1="3" y1="12" x2="21" y2="12" /><line x1="3" y1="18" x2="21" y2="18" /></svg>
@@ -20,13 +23,13 @@ export function WarehousePage() {
           <div className="wh-menu-dropdown" id="wh-menu-dropdown">
             <button className="wh-menu-item" onClick={() => { closeWhMenu(); goTo('add-tile'); }}>
               <span className="wmi-icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><line x1="12" y1="5" x2="12" y2="19" /><line x1="5" y1="12" x2="19" y2="12" /></svg>
+                <Plus />
               </span>
               <span className="wmi-content">
                 <span className="wmi-title">کاشی جدید</span>
                 <span className="wmi-sub">اضافه کردن دستی محصول</span>
               </span>
-              <svg className="wmi-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" width="13" height="13"><polyline points="15 18 9 12 15 6" /></svg>
+              <ChevronLeft className="wmi-chev" size={13} />
             </button>
             <button className="wh-menu-item" onClick={() => { closeWhMenu(); toggleAssignMode(); }}>
               <span className="wmi-icon">
@@ -36,7 +39,7 @@ export function WarehousePage() {
                 <span className="wmi-title">اختصاص به نماینده</span>
                 <span className="wmi-sub">سپردن کاشی‌ها به نمایندگان شبکه</span>
               </span>
-              <svg className="wmi-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" width="13" height="13"><polyline points="15 18 9 12 15 6" /></svg>
+              <ChevronLeft className="wmi-chev" size={13} />
             </button>
             <button className="wh-menu-item" onClick={() => { closeWhMenu(); goTo('excel-ai'); resetAiUpload(); }}>
               <span className="wmi-icon">
@@ -46,7 +49,7 @@ export function WarehousePage() {
                 <span className="wmi-title">بروزرسانی از اکسل</span>
                 <span className="wmi-sub">ایمپورت گروهی موجودی با هوش مصنوعی</span>
               </span>
-              <svg className="wmi-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" width="13" height="13"><polyline points="15 18 9 12 15 6" /></svg>
+              <ChevronLeft className="wmi-chev" size={13} />
             </button>
           </div>
           <div className="wh-menu-backdrop" id="wh-menu-backdrop" onClick={() => { closeWhMenu() }}></div>
@@ -56,7 +59,7 @@ export function WarehousePage() {
             <div className="assign-overlay-header">
               <h3>اختصاص کاشی به نماینده</h3>
               <button className="cancel-btn" onClick={() => { toggleAssignMode() }}>
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><line x1="18" y1="6" x2="6" y2="18" /><line x1="6" y1="6" x2="18" y2="18" /></svg>
+                <Close strokeWidth={2.5} />
                 انصراف
               </button>
             </div>
@@ -64,7 +67,7 @@ export function WarehousePage() {
             
             <div className="rep-selector" id="rep-selector" onClick={() => { toggleRepDropdown() }}>
               <div className="sel-ico">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" /><circle cx="12" cy="7" r="4" /></svg>
+                <User />
               </div>
               <div className="sel-info">
                 <div className="sel-placeholder" id="rep-placeholder">نماینده‌ای انتخاب کن…</div>
@@ -72,7 +75,7 @@ export function WarehousePage() {
                 <div className="sel-stats" id="rep-stats" style={{display:'none'}}></div>
               </div>
               <div className="sel-chevron" id="rep-chevron">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" width="16" height="16"><polyline points="6 9 12 15 18 9" /></svg>
+                <ChevronDown size={16} />
               </div>
             </div>
             
@@ -112,7 +115,7 @@ export function WarehousePage() {
           <div className="rep-pill" id="rep-pill" style={{display:'none'}}>
             <div className="rp-left">
               <div className="rp-ico">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" width="12" height="12"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" /><circle cx="12" cy="7" r="4" /></svg>
+                <User size={12} />
               </div>
               <div className="rp-txt">
                 <span className="rp-label">در حال اختصاص به:</span>
@@ -120,7 +123,7 @@ export function WarehousePage() {
               </div>
             </div>
             <button className="rp-cancel" onClick={() => { toggleAssignMode() }}>
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" width="12" height="12"><line x1="18" y1="6" x2="6" y2="18" /><line x1="6" y1="6" x2="18" y2="18" /></svg>
+              <Close size={12} strokeWidth={2.5} />
               انصراف
             </button>
           </div>
@@ -134,105 +137,13 @@ export function WarehousePage() {
                 <div className="pb-sub">تعیین قیمت کن تا تو انبار ظاهر بشن</div>
               </div>
               <div className="pb-arrow">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" width="14" height="14"><polyline points="15 18 9 12 15 6" /></svg>
+                <ChevronLeft size={14} />
               </div>
             </div>
 
-            <div className="tile-card" data-tile-id="t1" data-assigned="true" onClick={(e) => { handleTileClick(e, 'tile-detail') }}>
-              <div className="meta-chips">
-                <span className="meta-chip sku">6029301028342120</span>
-                <span className="meta-chip">۱۰۰×۳۰</span>
-              </div>
-              <div className="title-wrap">کاشی سرامیک — پله ۸۳۴</div>
-              <div className="stats-row">
-                <div className="sub-stats">
-                  <span className="sub-cell"><span className="sub-dot physical"></span><span className="sub-lbl">فیزیکی</span><span className="sub-val">۱۲۶</span></span>
-                  <span className="sub-cell"><span className="sub-dot freeze"></span><span className="sub-lbl">فریز</span><span className="sub-val">۱۲</span></span>
-                </div>
-                <span className="available-chip">
-                  <span className="ac-val">۱۱۴</span>
-                  <span className="ac-lbl">قابل فروش</span>
-                </span>
-              </div>
-              <div className="assign-check">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3"><polyline points="20 6 9 17 4 12" /></svg>
-              </div>
-              <div className="tc-arrow">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" width="16" height="16"><polyline points="15 18 9 12 15 6" /></svg>
-              </div>
-            </div>
-
-            <div className="tile-card" data-tile-id="t2" data-assigned="true" onClick={(e) => { handleTileClick(e, 'tile-detail') }}>
-              <div className="meta-chips">
-                <span className="meta-chip sku">6029201024802120</span>
-                <span className="meta-chip">۱۰۰×۳۵</span>
-              </div>
-              <div className="title-wrap">کاشی خاک‌سفید — زیرپله ۴۸۰</div>
-              <div className="stats-row">
-                <div className="sub-stats">
-                  <span className="sub-cell"><span className="sub-dot physical"></span><span className="sub-lbl">فیزیکی</span><span className="sub-val">۱۶۸</span></span>
-                  <span className="sub-cell"><span className="sub-dot freeze"></span><span className="sub-lbl">فریز</span><span className="sub-val">۰</span></span>
-                </div>
-                <span className="available-chip">
-                  <span className="ac-val">۱۶۸</span>
-                  <span className="ac-lbl">قابل فروش</span>
-                </span>
-              </div>
-              <div className="assign-check">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3"><polyline points="20 6 9 17 4 12" /></svg>
-              </div>
-              <div className="tc-arrow">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" width="16" height="16"><polyline points="15 18 9 12 15 6" /></svg>
-              </div>
-            </div>
-
-            <div className="tile-card" data-tile-id="t3" data-assigned="false" onClick={(e) => { handleTileClick(e, 'tile-detail') }}>
-              <div className="meta-chips">
-                <span className="meta-chip sku">6029201030302120</span>
-                <span className="meta-chip">۱۰۰×۳۰</span>
-              </div>
-              <div className="title-wrap">کاشی خاک‌سفید — پله ۸۳۰ پرسلان مات ممتاز</div>
-              <div className="stats-row">
-                <div className="sub-stats">
-                  <span className="sub-cell"><span className="sub-dot physical"></span><span className="sub-lbl">فیزیکی</span><span className="sub-val">۱۵</span></span>
-                  <span className="sub-cell"><span className="sub-dot freeze"></span><span className="sub-lbl">فریز</span><span className="sub-val">۵</span></span>
-                </div>
-                <span className="available-chip low">
-                  <span className="ac-val">۱۰</span>
-                  <span className="ac-lbl">قابل فروش</span>
-                </span>
-              </div>
-              <div className="assign-check">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3"><polyline points="20 6 9 17 4 12" /></svg>
-              </div>
-              <div className="tc-arrow">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" width="16" height="16"><polyline points="15 18 9 12 15 6" /></svg>
-              </div>
-            </div>
-
-            <div className="tile-card" data-tile-id="t4" data-assigned="false" onClick={(e) => { handleTileClick(e, 'tile-detail') }}>
-              <div className="meta-chips">
-                <span className="meta-chip sku">6029301028822120</span>
-                <span className="meta-chip">۱۲۰×۶۰</span>
-              </div>
-              <div className="title-wrap">کاشی پرسلان کلکته گلد لعاب‌دار صیقلی</div>
-              <div className="stats-row">
-                <div className="sub-stats">
-                  <span className="sub-cell"><span className="sub-dot physical"></span><span className="sub-lbl">فیزیکی</span><span className="sub-val">۹۲</span></span>
-                  <span className="sub-cell"><span className="sub-dot freeze"></span><span className="sub-lbl">فریز</span><span className="sub-val">۸</span></span>
-                </div>
-                <span className="available-chip">
-                  <span className="ac-val">۸۴</span>
-                  <span className="ac-lbl">قابل فروش</span>
-                </span>
-              </div>
-              <div className="assign-check">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3"><polyline points="20 6 9 17 4 12" /></svg>
-              </div>
-              <div className="tc-arrow">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" width="16" height="16"><polyline points="15 18 9 12 15 6" /></svg>
-              </div>
-            </div>
+            {TILES.map((t) => (
+              <TileCard key={t.id} {...t} onPress={(e) => handleTileClick(e, 'tile-detail')} />
+            ))}
           </div>
 
           {/* ASSIGN ACTION BAR */}
@@ -242,11 +153,11 @@ export function WarehousePage() {
               <div className="ab-sub" id="ab-sub">کاشی‌ای انتخاب نشده</div>
             </div>
             <button className="ab-btn remove" id="ab-remove-btn" onClick={() => { confirmAssignChanges('remove') }} style={{display:'none'}}>
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><line x1="18" y1="6" x2="6" y2="18" /><line x1="6" y1="6" x2="18" y2="18" /></svg>
+              <Close strokeWidth={2.5} />
               حذف
             </button>
             <button className="ab-btn confirm" id="ab-confirm-btn" onClick={() => { confirmAssignChanges('add') }} style={{display:'none'}}>
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><polyline points="20 6 9 17 4 12" /></svg>
+              <Check strokeWidth={2.5} />
               ثبت
             </button>
           </div></>

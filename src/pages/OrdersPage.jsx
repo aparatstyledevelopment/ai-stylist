@@ -1,5 +1,7 @@
 import { useState } from 'react';
 import { useLegacyActions } from '../hooks/useLegacyActions.js';
+import { Search, Check } from '../components/icons.jsx';
+import { OrderCard } from '../components/OrderCard.jsx';
 
 const ordersData = {
   mine: [
@@ -45,10 +47,7 @@ export function OrdersPage() {
           placeholder="جستجو در حواله‌ها…"
           onFocus={() => toast('جستجوی زنده فعال شد')}
         />
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
-          <circle cx="11" cy="11" r="8" />
-          <path d="m21 21-4.35-4.35" />
-        </svg>
+        <Search />
       </div>
 
       <div className="tabs-wrap">
@@ -73,9 +72,7 @@ export function OrdersPage() {
             <div className="zero-state">
               <div className="illus">
                 <div className="check-circle">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                    <polyline points="20 6 9 17 4 12" />
-                  </svg>
+                  <Check />
                 </div>
               </div>
               <h3>همه کارها تمومه!</h3>
@@ -94,57 +91,7 @@ export function OrdersPage() {
           </>
         ) : (
           data.map((o) => (
-            <div className="order-card" key={o.id} onClick={() => goTo('order-detail')}>
-              <div className="oc-header">
-                <span className={`chip ${o.chip}`}><span className="dot"></span>{o.chipLabel}</span>
-                <span className="oc-id">ord-{o.id}#</span>
-              </div>
-              <div className="oc-body">
-                <div className="oc-info">
-                  <div className="oc-customer">{o.customer}</div>
-                  {o.summary && (
-                    <div className="oc-meta">
-                      <span className="m-item">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" width="12" height="12">
-                          <rect x="3" y="3" width="18" height="18" rx="2" />
-                          <line x1="3" y1="9" x2="21" y2="9" />
-                          <line x1="9" y1="21" x2="9" y2="9" />
-                        </svg>
-                        {' '}{o.summary.items} قلم
-                      </span>
-                      <span className="m-sep">·</span>
-                      <span className="m-item" style={{ direction: 'ltr' }}>{o.summary.area}</span>
-                    </div>
-                  )}
-                </div>
-                <div className="oc-amount">
-                  <div className="val">{o.amount}</div>
-                  <div className="unit">تومان</div>
-                </div>
-              </div>
-              {o.rejected && (
-                <div className="reject-note">
-                  <div className="body">
-                    <div className="lbl">رد توسط {o.rejectBy}</div>
-                    <div className="reason">{o.rejected}</div>
-                  </div>
-                  <div className="ico-r">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" width="10" height="10">
-                      <line x1="18" y1="6" x2="6" y2="18" />
-                      <line x1="6" y1="6" x2="18" y2="18" />
-                    </svg>
-                  </div>
-                </div>
-              )}
-              <div className="oc-footer">
-                <span className="oc-time">{o.meta || o.summary?.date || ''}</span>
-                <div className={`oc-arrow${!o.action ? ' ghost' : ''}`}>
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2">
-                    <polyline points="15 18 9 12 15 6" />
-                  </svg>
-                </div>
-              </div>
-            </div>
+            <OrderCard key={o.id} o={o} onPress={() => goTo('order-detail')} />
           ))
         )}
       </div>
